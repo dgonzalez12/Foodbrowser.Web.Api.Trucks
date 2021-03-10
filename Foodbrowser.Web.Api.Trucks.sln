@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1340
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foodbrowser.Web.Api.Trucks", "Foodbrowser.Web.Api.Trucks\Foodbrowser.Web.Api.Trucks.csproj", "{CF847A11-7EBD-4BBD-AB33-53B728587DD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foodbrowser.Web.Api.Trucks", "Foodbrowser.Web.Api.Trucks\Foodbrowser.Web.Api.Trucks.csproj", "{CF847A11-7EBD-4BBD-AB33-53B728587DD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{6B628717-CF39-45CA-B140-B4120B7CEACD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{71884559-45BF-43BF-88B9-33859EB9A46E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E180D02A-B8EA-4AF7-A96C-E0C4F396A26B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foodbrowser.Core.Modules.Trucks", "Foodbrowser.Core.Modules.Trucks\Foodbrowser.Core.Modules.Trucks.csproj", "{ADADBE62-1D5D-44DD-9534-350272B71554}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foodbrowser.Web.Api.Trucks.Test", "Foodbrowser.Web.Api.Trucks.Test\Foodbrowser.Web.Api.Trucks.Test.csproj", "{99CF8272-97D8-487B-B0F2-C796DB901ACD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +25,22 @@ Global
 		{CF847A11-7EBD-4BBD-AB33-53B728587DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF847A11-7EBD-4BBD-AB33-53B728587DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF847A11-7EBD-4BBD-AB33-53B728587DD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADADBE62-1D5D-44DD-9534-350272B71554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADADBE62-1D5D-44DD-9534-350272B71554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADADBE62-1D5D-44DD-9534-350272B71554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADADBE62-1D5D-44DD-9534-350272B71554}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99CF8272-97D8-487B-B0F2-C796DB901ACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99CF8272-97D8-487B-B0F2-C796DB901ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99CF8272-97D8-487B-B0F2-C796DB901ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99CF8272-97D8-487B-B0F2-C796DB901ACD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CF847A11-7EBD-4BBD-AB33-53B728587DD8} = {6B628717-CF39-45CA-B140-B4120B7CEACD}
+		{ADADBE62-1D5D-44DD-9534-350272B71554} = {71884559-45BF-43BF-88B9-33859EB9A46E}
+		{99CF8272-97D8-487B-B0F2-C796DB901ACD} = {E180D02A-B8EA-4AF7-A96C-E0C4F396A26B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8CA2AC58-364F-4F44-80F3-F1EFBD346F64}
