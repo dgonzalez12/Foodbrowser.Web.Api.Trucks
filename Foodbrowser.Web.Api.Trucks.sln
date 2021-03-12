@@ -15,9 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foodbrowser.Core.Modules.Tr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foodbrowser.Web.Api.Trucks.Test", "Foodbrowser.Web.Api.Trucks.Test\Foodbrowser.Web.Api.Trucks.Test.csproj", "{99CF8272-97D8-487B-B0F2-C796DB901ACD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foodbrowser.Core.Common", "Foodbrowser.Core.Common\Foodbrowser.Core.Common.csproj", "{F472CD3C-CAD9-4B3A-8C9B-E90449142F95}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foodbrowser.Web.Common", "Foodbrowser.Web.Common\Foodbrowser.Web.Common.csproj", "{BB99FD9B-9148-4576-A86A-BEFF1E3A9B16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foodbrowser.Web.Common", "Foodbrowser.Web.Common\Foodbrowser.Web.Common.csproj", "{BB99FD9B-9148-4576-A86A-BEFF1E3A9B16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +35,6 @@ Global
 		{99CF8272-97D8-487B-B0F2-C796DB901ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99CF8272-97D8-487B-B0F2-C796DB901ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99CF8272-97D8-487B-B0F2-C796DB901ACD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F472CD3C-CAD9-4B3A-8C9B-E90449142F95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F472CD3C-CAD9-4B3A-8C9B-E90449142F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F472CD3C-CAD9-4B3A-8C9B-E90449142F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F472CD3C-CAD9-4B3A-8C9B-E90449142F95}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BB99FD9B-9148-4576-A86A-BEFF1E3A9B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BB99FD9B-9148-4576-A86A-BEFF1E3A9B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB99FD9B-9148-4576-A86A-BEFF1E3A9B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,7 +47,6 @@ Global
 		{CF847A11-7EBD-4BBD-AB33-53B728587DD8} = {6B628717-CF39-45CA-B140-B4120B7CEACD}
 		{ADADBE62-1D5D-44DD-9534-350272B71554} = {71884559-45BF-43BF-88B9-33859EB9A46E}
 		{99CF8272-97D8-487B-B0F2-C796DB901ACD} = {E180D02A-B8EA-4AF7-A96C-E0C4F396A26B}
-		{F472CD3C-CAD9-4B3A-8C9B-E90449142F95} = {71884559-45BF-43BF-88B9-33859EB9A46E}
 		{BB99FD9B-9148-4576-A86A-BEFF1E3A9B16} = {71884559-45BF-43BF-88B9-33859EB9A46E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Foodbrowser.Core.Modules.Trucks.Filtering;
-using Foodbrowser.Core.Modules.Trucks.Servicing;
+﻿using Foodbrowser.Core.Modules.Trucks.Servicing;
 using Foodbrowser.Web.Api.Trucks.Definition;
 using Foodbrowser.Web.Api.Trucks.Filtering;
 using Foodbrowser.Web.Api.Trucks.Presentation;
 using Foodbrowser.Web.Common.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Foodbrowser.Web.Api.Trucks.Controllers
 {
@@ -25,10 +22,11 @@ namespace Foodbrowser.Web.Api.Trucks.Controllers
         }
 
         [HttpGet]
-        public async Task<BaseResponse<ICollection<TruckView>>> FindTrucks([FromBody]TruckFilter filter)
+        public async Task<BaseResponse<ICollection<TruckView>>> FindTrucks([FromQuery]DayOfWeek? dayOfWeek, [FromQuery]string time)
         {
             try
             {
+                var filter = new TruckFilter { DayOfWeek = dayOfWeek, Time = time };
                 var trucks = await TruckService.FindTrucksAsync<TruckFilter>(filter);
                 var views = TruckMapper.ToViews(trucks);
                 return BaseResponse<ICollection<TruckView>>.Create("Done.", views);

@@ -3,13 +3,9 @@ using Foodbrowser.Core.Modules.Trucks.Filtering;
 using Foodbrowser.Core.Modules.Trucks.Persistence;
 using Foodbrowser.Web.Api.Trucks.Definition;
 using Foodbrowser.Web.Api.Trucks.External;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -33,9 +29,7 @@ namespace Foodbrowser.Web.Api.Trucks.Persistence
             var uri = $"{ SocrataClient.Host + SocrataClient.Resource }";
 
             if (filter != null)
-            {
                 uri += filter.ToString();
-            }
 
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Clear();
@@ -45,8 +39,7 @@ namespace Foodbrowser.Web.Api.Trucks.Persistence
 
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new TruckException($"Socrata service error: { error }.");
+                throw new TruckException($"Socrata service error: See log for more information.");
             }
 
             var stringContent = await response.Content.ReadAsStringAsync();
