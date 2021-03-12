@@ -1,12 +1,10 @@
 ﻿using Foodbrowser.Web.Api.Trucks.Controllers;
 using Foodbrowser.Web.Api.Trucks.External;
 using Foodbrowser.Web.Api.Trucks.Persistence;
-using Foodbrowser.Web.Api.Trucks.Presentation;
 using Foodbrowser.Web.Api.Trucks.Servicing;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -14,6 +12,10 @@ namespace Foodbrowser.Web.Api.Trucks.Test
 {
     public class TrucksApiTest
     {
+        /// <summary>
+        /// Evaluates that filter parameters are not required.
+        /// </summary>
+        /// <returns>True if operation was executed succesfully. </returns>
         [Fact]
         public async Task FindTrucks_WithoutFilter_ReturnsListOfTrucks()
         {
@@ -30,11 +32,15 @@ namespace Foodbrowser.Web.Api.Trucks.Test
             var truckService = new TruckService(truckStore);
             var trucksController = new TrucksController(truckService);
 
-            var response = await trucksController.FindTrucks(null);
+            var response = await trucksController.FindTrucks(null, null);
 
             Assert.True(response.Success);
         }
 
+        /// <summary>
+        /// Evaluates that filter by day order is executed correctly..
+        /// </summary>
+        /// <returns>True if operation was executed succesfully. </returns>
         [Fact]
         public async Task FindTrucks_WithDayOrderFilter_ReturnsListOfTrucks()
         {
@@ -51,11 +57,15 @@ namespace Foodbrowser.Web.Api.Trucks.Test
             var truckService = new TruckService(truckStore);
             var trucksController = new TrucksController(truckService);
 
-            var response = await trucksController.FindTrucks(new TruckFilterView { DayOfWeek = DayOfWeek.Saturday });
+            var response = await trucksController.FindTrucks(DayOfWeek.Saturday, null);
 
             Assert.True(response.Success);
         }
 
+        /// <summary>
+        /// Evaluates that filter by time is executed correctly..
+        /// </summary>
+        /// <returns>True if operation was executed succesfully. </returns>
         [Fact]
         public async Task FindTrucks_WithTimeFilter_ReturnsListOfTrucks()
         {
@@ -72,11 +82,15 @@ namespace Foodbrowser.Web.Api.Trucks.Test
             var truckService = new TruckService(truckStore);
             var trucksController = new TrucksController(truckService);
 
-            var response = await trucksController.FindTrucks(new TruckFilterView { Time = "16:00" });
+            var response = await trucksController.FindTrucks(null, "16:00");
 
             Assert.True(response.Success);
         }
 
+        /// <summary>
+        /// Evaluates that 'time' parameter allows only values between 00:00 and 23:59.
+        /// </summary>
+        /// <returns>False if operation was validated succesfully. </returns>
         [Fact]
         public async Task FindTrucks_WithTimeFilter_ReturnsTimeFormatIsIncorrect()
         {
@@ -93,39 +107,10 @@ namespace Foodbrowser.Web.Api.Trucks.Test
             var truckService = new TruckService(truckStore);
             var trucksController = new TrucksController(truckService);
 
-            var response = await trucksController.FindTrucks(new TruckFilterView { Time = "25:00" });
+            var response = await trucksController.FindTrucks(null, "25:00");
 
             Assert.False(response.Success);
             Assert.Equal("Server Error: Time format is incorrect.", response.Message);
-        }
-
-        [Fact]
-        public async Task FindTrucks_WithPagination_ReturnsListOfTrucks()
-        {
-            var dictionary = new Dictionary<string, string>
-            {
-                { "SocrataClient:Host", "https://data.sfgov.org/resource/" },
-                { "SocrataClient:Resource", "jjew-r69b.json"}
-            };
-            var configuration = new ConfigurationBuilder()
-                .AddInMemoryCollection(dictionary)
-                .Build();
-            var socrataClient = new SocrataClient(configuration);
-            var truckStore = new TruckStore(socrataClient);
-            var truckService = new TruckService(truckStore);
-            var trucksController = new TrucksController(truckService);
-
-            var response = await trucksController.FindTrucks(new TruckFilterView
-            {
-                Paging = new TruckPagingView
-                {
-                    PageNumber = 1,
-                    RowsPerPage = 10
-                }
-            });
-
-            Assert.True(response.Success);
-            Assert.InRange(response.Obj.Count, 0, 10);
         }
     }
 }

@@ -6,11 +6,24 @@ using System.Text.RegularExpressions;
 
 namespace Foodbrowser.Web.Api.Trucks.Filtering
 {
+    /// <summary>
+    /// Represents a filter object used by truck modules.
+    /// </summary>
     public class TruckFilter : ITruckFilter
     {
+        /// <summary>
+        /// Day of the week. Starts as Sunday=0.
+        /// </summary>
         public DayOfWeek? DayOfWeek { get; set; }
+        /// <summary>
+        /// Hour of the day. Starts on 00:00 and end on 23:59.
+        /// </summary>
         public string Time { get; set; }
 
+        /// <summary>
+        /// Returns filters as a url encode string.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             var filters = new List<string>();
@@ -37,6 +50,9 @@ namespace Foodbrowser.Web.Api.Trucks.Filtering
             return parameters;
         }
 
+        /// <summary>
+        /// Validates filter values.
+        /// </summary>
         public void Validate()
         {
             if (DayOfWeek != null)

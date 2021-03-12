@@ -2,6 +2,9 @@
 
 namespace Foodbrowser.Web.Api.Trucks.Presentation
 {
+    /// <summary>
+    /// Represents a view of truck object.
+    /// </summary>
     public class TruckView
     {
         public int DayOrder { get; set; }

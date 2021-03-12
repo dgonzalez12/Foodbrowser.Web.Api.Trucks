@@ -2,6 +2,9 @@
 
 namespace Foodbrowser.Core.Modules.Trucks.Definition
 {
+    /// <summary>
+    /// Represents a Truck object.
+    /// </summary>
     public interface ITruck
     {
         int DayOrder { get; set; }
@@ -25,6 +28,6 @@ namespace Foodbrowser.Core.Modules.Trucks.Definition
         decimal? X { get; set; }
         decimal? Y { get; set; }
         decimal? Latitude { get; set; }
-        decimal? Longitude { get; set; }        
+        decimal? Longitude { get; set; }
     }
 }

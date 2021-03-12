@@ -3,8 +3,14 @@ using Microsoft.Extensions.Configuration;
 
 namespace Foodbrowser.Web.Api.Trucks.External
 {
+    /// <summary>
+    /// Represents a socrata client.
+    /// </summary>
     public class SocrataClient : ISocrataClient
     {
+        /// <summary>
+        /// Host.
+        /// </summary>
         public string Host
         {
             get
@@ -17,6 +23,10 @@ namespace Foodbrowser.Web.Api.Trucks.External
                 return host;
             }
         }
+
+        /// <summary>
+        /// Resource.
+        /// </summary>
         public string Resource
         {
             get
@@ -30,8 +40,15 @@ namespace Foodbrowser.Web.Api.Trucks.External
             }
         }
 
+        /// <summary>
+        /// Instance of configuration object.
+        /// </summary>
         private readonly IConfiguration Configuration;
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="configuration">Instance of configuration object.</param>
         public SocrataClient(IConfiguration configuration)
         {
             Configuration = configuration != null

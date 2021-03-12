@@ -10,6 +10,11 @@ namespace Foodbrowser.Web.Api.Trucks.Dinjection
 {
     public static class TruckExtensions
     {
+        /// <summary>
+        /// Extension method for truck services registration.
+        /// </summary>
+        /// <param name="services">Instance of IServiceCollection.</param>
+        /// <returns>IServiceCollection</returns>
         public static IServiceCollection AddTrucks(this IServiceCollection services)
         {
             services.AddScoped<ISocrataClient, SocrataClient>();
@@ -18,6 +23,11 @@ namespace Foodbrowser.Web.Api.Trucks.Dinjection
             return services;
         }
 
+        /// <summary>
+        /// Extension method for CORS configuration.
+        /// </summary>
+        /// <param name="services">Instance of IServiceCollection.</param>
+        /// <returns>IServiceCollection</returns>
         public static IServiceCollection AddCorsPolicy(this IServiceCollection services)
         {
             services.AddCors(o =>

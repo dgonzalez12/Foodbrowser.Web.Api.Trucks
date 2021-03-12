@@ -3,6 +3,9 @@ using System;
 
 namespace Foodbrowser.Web.Api.Trucks.Definition
 {
+    /// <summary>
+    /// Represents a Truck object.
+    /// </summary>
     public class Truck : ITruck
     {
         public int DayOrder { get; set; }

@@ -22,6 +22,15 @@ namespace Foodbrowser.Web.Api.Trucks
             services.AddTrucks()
                     .AddCorsPolicy()
                     .AddSwaggerGen();
+            //services.AddCors(o =>
+            //{
+            //    o.AddPolicy("EnableCORS", builder =>
+            //    {
+            //        builder.AllowAnyOrigin()
+            //        .AllowAnyHeader()
+            //        .AllowAnyMethod();
+            //    });
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,9 +41,9 @@ namespace Foodbrowser.Web.Api.Trucks
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
-
             app.UseCors("EnableCORS");
+
+            app.UseMvc();
 
             app.UseSwagger();
             app.UseSwaggerUI(o =>

@@ -12,10 +12,21 @@ using System.Threading.Tasks;
 
 namespace Foodbrowser.Web.Api.Trucks.Persistence
 {
+    /// <summary>
+    /// Represents a data store of a truck object.
+    /// </summary>
+    /// <typeparam name="T">Type of truck object.</typeparam>
     public class TruckStore : ITruckStore<Truck>
     {
+        /// <summary>
+        /// Instance of socrata client.
+        /// </summary>
         private readonly ISocrataClient SocrataClient;
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="socrataClient">Instance of socrata client.</param>
         public TruckStore(ISocrataClient socrataClient)
         {
             SocrataClient = socrataClient != null
@@ -23,6 +34,12 @@ namespace Foodbrowser.Web.Api.Trucks.Persistence
                             : throw new TruckException($"Cannot find service: { nameof(socrataClient) }.");
         }
 
+        /// <summary>
+        /// Gets a list of truck objects.
+        /// </summary>
+        /// <typeparam name="TFilter">Type of truck filter.</typeparam>
+        /// <param name="filter">Filter object.</param>
+        /// <returns></returns>
         public async Task<ICollection<Truck>> FindTrucksAsync<TFilter>(TFilter filter)
             where TFilter : class, ITruckFilter
         {
