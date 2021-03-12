@@ -1,4 +1,5 @@
 ﻿using Foodbrowser.Core.Modules.Trucks.Exceptions;
+using Foodbrowser.Core.Modules.Trucks.Filtering;
 using Foodbrowser.Core.Modules.Trucks.Persistence;
 using Foodbrowser.Web.Api.Trucks.Definition;
 using Foodbrowser.Web.Api.Trucks.External;
@@ -10,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace Foodbrowser.Web.Api.Trucks.Persistence
@@ -25,17 +27,26 @@ namespace Foodbrowser.Web.Api.Trucks.Persistence
                             : throw new TruckException($"Cannot find service: { nameof(socrataClient) }.");
         }
 
-        public async Task<ICollection<Truck>> FindTrucksAsync<TruckFilter>(TruckFilter filter)
+        public async Task<ICollection<Truck>> FindTrucksAsync<TFilter>(TFilter filter)
+            where TFilter : class, ITruckFilter
         {
+            var uri = $"{ SocrataClient.Host + SocrataClient.Resource }";
+
+            if (filter != null)
+            {
+                uri += filter.ToString();
+            }
+
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Clear();
-            httpClient.DefaultRequestHeaders.Add("Content-Type", "application/json");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var response = await httpClient.GetAsync(new Uri($"{ SocrataClient.Host + SocrataClient.Resource }"));
+            var response = await httpClient.GetAsync(new Uri(uri));
 
             if (!response.IsSuccessStatusCode)
             {
-                throw new TruckException($"Socrata service error. Please see log for more information.");
+                var error = await response.Content.ReadAsStringAsync();
+                throw new TruckException($"Socrata service error: { error }.");
             }
 
             var stringContent = await response.Content.ReadAsStringAsync();

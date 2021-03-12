@@ -12,19 +12,19 @@ namespace Foodbrowser.Core.Modules.Trucks.Definition
         string Location { get; set; }
         string LocationDesc { get; set; }
         string OptionalText { get; set; }
-        int LocationId { get; set; }
+        int? LocationId { get; set; }
         string Start24 { get; set; }
         string End24 { get; set; }
-        int CNN { get; set; }
-        DateTime Addr_Date_Create { get; set; }
-        DateTime Addr_Date_Modified { get; set; }
+        int? CNN { get; set; }
+        DateTime? Addr_Date_Create { get; set; }
+        DateTime? Addr_Date_Modified { get; set; }
         string Block { get; set; }
         string Lot { get; set; }
         string ColdTruck { get; set; }
         string Applicant { get; set; }
-        int X { get; set; }
-        int Y { get; set; }
-        int Latitude { get; set; }
-        int Longitude { get; set; }        
+        decimal? X { get; set; }
+        decimal? Y { get; set; }
+        decimal? Latitude { get; set; }
+        decimal? Longitude { get; set; }        
     }
 }
